@@ -1,0 +1,1 @@
+mama-ai: a minimal CLI+API+UI starter to turn any model into a demo in under an hour.

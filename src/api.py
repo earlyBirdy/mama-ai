@@ -1,4 +1,4 @@
-"""FastAPI demo for mama-ai with real HF model."""
+"""FastAPI demo for mama-ai with pluggable backends."""
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -7,9 +7,10 @@ from src.model import predict_text
 
 class PredictRequest(BaseModel):
     text: str
+    backend: str | None = None  # "hf", "gemini", or "heuristic"
 
 
-app = FastAPI(title="mama-ai API", version="1.1.0")
+app = FastAPI(title="mama-ai API", version="1.2.0")
 
 
 @app.get("/health")
@@ -19,10 +20,10 @@ async def health():
 
 @app.post("/predict")
 async def predict(body: PredictRequest):
-    """Predict sentiment for the given text using a tiny HF model."""
-    result = predict_text(body.text)
+    result = predict_text(body.text, backend=body.backend)
     return {
         "input": body.text,
+        "backend": result["backend"],
         "label": result["label"],
         "score": result["score"],
     }

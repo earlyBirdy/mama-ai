@@ -1,1 +1,1 @@
-# mama-ai src package
+# Ensure src is treated as a package during tests.

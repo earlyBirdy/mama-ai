@@ -1,6 +1,8 @@
+numpy
 torch
 transformers
 fastapi
 uvicorn
 streamlit
 pydantic>=1.10,<3
+pytest

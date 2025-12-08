@@ -1,10 +1,5 @@
-"""Entry point for mama-ai.
-
-For now this just runs a simple placeholder that you can swap with
-CLI, FastAPI, or Streamlit entrypoints.
-"""
-
-from .simple_cli import run_cli
+"""Entry point for mama-ai CLI."""
+from src.simple_cli import run_cli
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 """Streamlit demo UI for mama-ai with real HF model."""
 import streamlit as st
 
-from .model import predict_text
+from src.model import predict_text
 
 
 st.set_page_config(page_title="mama-ai Demo", layout="centered")

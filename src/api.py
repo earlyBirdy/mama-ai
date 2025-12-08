@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from .model import predict_text
+from src.model import predict_text
 
 
 class PredictRequest(BaseModel):

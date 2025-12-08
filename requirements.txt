@@ -6,3 +6,6 @@ uvicorn
 streamlit
 pydantic>=1.10,<3
 pytest
+python-dotenv
+# Optional Gemini client (uncomment if you want real Gemini calls)
+# google-genai

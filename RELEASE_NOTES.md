@@ -1,3 +1,14 @@
+# mama-ai v1.2.1 Release Notes
+
+This release improves the Gemini integration experience and operational
+readiness for demos and hackathons:
+
+- Environment-based configuration using `.env` and `GEMINI_API_KEY`.
+- Streamlit UI widgets to set the Gemini key for the current session.
+- Backend health indicators surfaced via API and UI.
+- A dedicated `docs/gemini_integration.md` to guide setup.
+
+
 # mama-ai v1.1.0 Release Notes
 
 This release makes mama-ai a hackathon-ready, *real* model demo:

@@ -1,7 +1,8 @@
 # 30s Demo Script (Spoken)
 
-"Hi, this is mama-ai. In hackathons, everyone loses time wiring infra instead of proving ideas.
-mama-ai fixes that. Out of the box, you get three things:
-a CLI for quick experiments, an API for integrations, and a UI to demo to judges.
-Behind this simple demo, the structure is ready for real models, data, and evaluations.
-So instead of spending a day on boilerplate, you plug in your model and ship in under an hour."
+"Hi, this is mama-ai. In hackathons, teams lose time wiring infrastructure
+instead of proving ideas. mama-ai fixes that. Out of the box, you get a CLI,
+an API, and a web UI running a real sentiment model. You can flip between
+Hugging Face, Gemini, and a local heuristic backend with a single dropdown.
+If a dependency fails, mama-ai falls back automatically so the demo never
+crashes. This lets you spend your time on the idea, not the boilerplate."

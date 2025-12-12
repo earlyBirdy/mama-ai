@@ -18,6 +18,18 @@ On Windows:
 run_ui.bat
 run_api.bat
 ```
+---
+
+## 🧪 Judge Demo Path
+
+1. `pip install -r requirements.txt`
+2. In one terminal: `./run_api.sh`  (starts FastAPI on port 8000)
+3. In another terminal: `./run_ui.sh` (starts Streamlit on port 8501)
+4. Open `http://localhost:8501` in your browser
+5. Go to the **💜 MAMA.AI Demo** tab
+6. Click **"Run MAMA.AI 💜"** and read the reflection + grocery suggestions
+
+---
 
 ## 🧠 What this project does
 

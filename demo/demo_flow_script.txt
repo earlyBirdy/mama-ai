@@ -1,0 +1,22 @@
+MAMA.AI DEMO FLOW (40s)
+
+1. Show Welcome Screen
+   Narration: "This is MAMA.AI — a gentle health companion."
+
+2. Show Meal Capture Screen, tap to reveal sample meal image.
+   Narration: "You just take a photo of your meal."
+
+3. Show Meal Analysis Screen with calories, plate ratio, tiny tip.
+   Narration: "MAMA.AI understands the food and gives kind, realistic suggestions."
+
+4. Show Activity Input Screen and select 10–30 min.
+   Narration: "Then you tap how much you moved today. No smartwatch needed."
+
+5. Show Emotion Input Screen with a typed line: 'I felt stressed and wanted something sweet.'
+   Narration: "You can share how you're feeling, if you want."
+
+6. Show Final Response Screen with reflection + small grocery list.
+   Narration: "MAMA.AI responds like someone who cares, and even prepares a tiny grocery helper for tomorrow."
+
+7. End on Logo + Tagline.
+   Narration: "MAMA.AI isn’t a tracker. It’s a gentle companion, helping you build healthier habits one small step at a time."

@@ -1,7 +1,42 @@
+# __pycache__/
+# .pytest_cache/
+# .venv/
+# venv/
+# *.pyc
+# .DS_Store
+# .env
+
+# Python
 __pycache__/
-.pytest_cache/
-.venv/
-venv/
-*.pyc
-.DS_Store
+*.py[cod]
+*.pyo
+*.pyd
+*.so
 .env
+.venv
+venv/
+ENV/
+env/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Media
+*.mov
+*.mp4
+*.avi
+
+# Figma exports / temp
+*.fig~
+*.tmp

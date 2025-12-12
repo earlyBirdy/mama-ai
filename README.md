@@ -67,11 +67,12 @@ Then MAMA.AI responds like someone who genuinely cares:
 
 ---
 
-## 🧠 AI Architecture (Simplified)
+## 🧠 AI Architecture Overview
 
 ```text
 User Input
-  → Gemini 3 Pro (vision + text)
+  → Gemini 3 Pro (Vision + Text)
   → Reasoning & habit layer
+  → Food swap engine + grocery planner
   → Tone self-evaluation
-  → Response + grocery list + next tiny step
+  → Final caring response

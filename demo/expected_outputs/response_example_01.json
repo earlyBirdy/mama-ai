@@ -1,0 +1,38 @@
+{
+  "meal_analysis": {
+    "foods_detected": ["fried rice", "egg", "pork slices"],
+    "cooking_method_guess": "stir-fried",
+    "estimated_calories_range": "640–780 kcal",
+    "plate_balance": {
+      "protein": "medium",
+      "vegetables": "low",
+      "carbs": "high"
+    },
+    "tiny_improvement_tip": "Next time, try adding some greens or reducing the rice a little.",
+    "supportive_message": "This looks delicious — you’re doing great for even paying attention."
+  },
+  "emotion_analysis": {
+    "mood": "tired",
+    "trigger": "stress_eating",
+    "confidence": 82,
+    "validation_message": "It sounds like today took a lot of energy — thank you for sharing that.",
+    "tiny_action_suggestion": "Maybe tomorrow, prepare a simple snack in advance, so stress doesn’t choose for you."
+  },
+  "grocery_list": {
+    "grocery_items": [
+      {"name": "eggs", "category": "protein", "note": "quick breakfast base"},
+      {"name": "leafy greens", "category": "vegetable", "note": "easy to add next to rice dishes"},
+      {"name": "apples", "category": "fruit", "note": "sweet but filling snack"},
+      {"name": "yogurt", "category": "snack", "note": "good for an evening craving"},
+      {"name": "nuts", "category": "snack", "note": "small handful can calm hunger"}
+    ],
+    "supportive_message": "This list is just here to make tomorrow a little easier, not to restrict you."
+  },
+  "tone_evaluation": {
+    "mom_tone": 76,
+    "friend_tone": 16,
+    "coach_tone": 8,
+    "matches_preference": true,
+    "short_explanation": "The response is mostly nurturing and reassuring, with a small amount of guidance."
+  }
+}

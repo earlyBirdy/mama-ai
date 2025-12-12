@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from src.model import predict_text, get_backend_status
+from src.model import predict_text, get_backend_status, run_mama_ai_flow
 
 
 class PredictRequest(BaseModel):
@@ -34,3 +34,24 @@ async def predict(body: PredictRequest):
         "label": result["label"],
         "score": result["score"],
     }
+
+
+
+class MamaAIRequest(BaseModel):
+    meal_description: str
+    feeling: str
+    activity_level: str  # e.g. "0–10", "10–30", "30–60", "60+"
+
+@app.post("/mama_ai_demo")
+async def mama_ai_demo(body: MamaAIRequest):
+    """MAMA.AI demo endpoint.
+
+    Accepts a simple text-based description of the meal, feeling, and movement,
+    and returns a prototype JSON response representing what MAMA.AI would say.
+    """
+    result = run_mama_ai_flow(
+        meal_description=body.meal_description,
+        feeling=body.feeling,
+        activity_level=body.activity_level,
+    )
+    return result

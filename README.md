@@ -88,3 +88,35 @@ User Input
   → Food swap engine + grocery planner
   → Tone self-evaluation
   → Final caring response
+
+---
+
+## Test Status & Local Readiness
+
+As of 2025‑12‑12, the backend test suite passes locally:
+
+```bash
+pytest -q
+# 5 passed
+```
+
+Make sure you have a fresh virtualenv and install the pinned dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+pip install -r requirements.txt
+```
+
+## Gemini‑3 Hackathon Notes
+
+This repo is prepared for the Kaggle **Gemini‑3** hackathon submission:
+
+- ✅ Code and minimal API are in this repository
+- ✅ Basic tests (5 passed) confirm the core pipeline runs
+- ✅ A small FastAPI/Streamlit entrypoint is available for local demo
+- ✅ Hackathon‑specific docs live in `docs/`:
+  - `docs/gemini_integration.md` – how this project integrates Gemini models
+  - `docs/hackathon_submission.md` – draft submission text (title, one‑liner, overview, links)
+- ✅ Hugging Face Space (optional) can be pointed at this repo’s `streamlit_app.py`
+- 🔜 Future work (post‑hackathon): richer UX, broader device support, more health‑domains

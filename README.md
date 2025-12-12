@@ -30,12 +30,14 @@ run_api.bat
 It includes CLI, FastAPI, Streamlit UI, tests, a model abstraction layer,
 and hackathon-ready pitch scripts.
 
+---
+
 # 💜 MAMA.AI  
 *A gentle AI that helps you eat better — one small step at a time.*
 
 ---
 
-## 🍽️ What's MAMA.AI?
+## 🍽️ What is MAMA.AI?
 
 Most health apps push numbers, rules, or guilt.
 
@@ -56,13 +58,20 @@ Then MAMA.AI responds like someone who genuinely cares:
 
 ## ✨ Core Features
 
-| Feature | Description |
-|--------|-------------|
-| 🍲 Meal Photo Analysis | Gemini Vision identifies meal, calories, ingredients |
-| 🥦 Plate Ratio Coaching | Suggests realistic way to balance nutrition |
-| 🏃 Simple Activity Check-in | No smartwatch needed — one tap |
-| 💬 Voice Emotional Log | Helps understand patterns + triggers |
-| 🛍️ Grocery Suggestion Engine | “Let me help prepare better choices tomorrow.” |
-| 💜 Tone Adaptive System | AI evaluates its own tone and adjusts gently |
+- 🍲 **Meal Photo Analysis** – Gemini Vision identifies the meal and estimates calories  
+- 🥦 **Plate Ratio Coaching** – Easy, realistic nutrition tweaks  
+- 🏃 **Simple Activity Check-in** – One tap, no smartwatch  
+- 💬 **Voice Emotional Log** – Understand stress, cravings, and patterns  
+- 🛍️ **Grocery Suggestion Engine** – “Let me help tomorrow feel easier”  
+- 💜 **Tone Adaptive System** – AI checks its own tone (Mom / Friend / Coach %)  
 
 ---
+
+## 🧠 AI Architecture (Simplified)
+
+```text
+User Input
+  → Gemini 3 Pro (vision + text)
+  → Reasoning & habit layer
+  → Tone self-evaluation
+  → Response + grocery list + next tiny step

@@ -1,67 +1,82 @@
-# Gemini Integration Guide (mama-ai)
+# Gemini Integration – Mama‑AI
 
-This document explains how to enable and use the Gemini backend in mama-ai.
+This document explains how **Mama‑AI** is designed to plug into Google’s **Gemini** family of multimodal models
+for the Gemini‑3 Kaggle hackathon.
 
-## 1. Install optional dependencies
+## 1. Current Architecture (No‑Gemini Baseline)
 
-```bash
-pip install python-dotenv
-# and if you want real Gemini calls:
-# pip install google-genai
+Today the repo provides:
+
+- A lightweight FastAPI backend that exposes image upload + metadata endpoints.
+- Simple preprocessing utilities to:
+  - Normalize and resize photos from a phone gallery.
+  - Extract basic EXIF / contextual hints (timestamp, device, optional user tags).
+- A small rules/heuristics layer that can return placeholder suggestions so the app is usable even without an API key.
+- Streamlit / simple web front‑end (`streamlit_app.py`) that lets a caregiver upload a photo and view responses.
+
+This “baseline” mode makes the project easy to run locally without any external API access.
+
+## 2. Where Gemini Fits in the Loop
+
+When a valid Gemini API key is configured (via environment variable or config file), the flow becomes:
+
+1. User uploads a **daily photo** (e.g., meal, medication, wound, mood selfie) plus optional notes.
+2. Backend stores the image temporarily and runs light preprocessing.
+3. Backend builds a **multimodal prompt** for Gemini, including:
+   - The uploaded image
+   - Short text context (age group, known conditions, current goal like “track wound healing”)
+   - A conversation history snippet (recent check‑ins and suggestions)
+4. Gemini returns:
+   - A brief, caregiver‑friendly summary in natural language
+   - 2–4 small actionable suggestions
+   - Optional flags (e.g., “watch closely”, “non‑urgent”, “consider consulting a professional if X persists”)
+5. Backend structures this into a JSON response which the UI renders as a “Daily Health Card”.
+
+The app is intentionally **guidance‑oriented**, not diagnostic. All prompts emphasize that this is **not medical advice**.
+
+## 3. Prompting Strategy (High Level)
+
+For each request, Mama‑AI uses a prompt template along the lines of:
+
+- System: You are a gentle, cautious assistant helping caregivers reflect on daily photos. You never provide a diagnosis.
+- User: Provides the image + short note.
+- Additional context: Safe‑use policy, disclaimers, and user goals.
+
+The model is asked to produce:
+
+- A short “what I see” paragraph.
+- A few “today you could…” suggestions.
+- A safety reminder where appropriate.
+
+## 4. Configuration
+
+A typical config for Gemini integration might look like:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.0-flash
+GEMINI_MAX_TOKENS=512
+GEMINI_TEMPERATURE=0.4
 ```
 
-`python-dotenv` is already in `requirements.txt`. You only need `google-genai`
-if you intend to call Gemini for real.
+The backend would read these values from environment variables or a `.env` file and only enable Gemini calls when
+a key is present.
 
-## 2. Configure GEMINI_API_KEY
+## 5. Fallback Behaviour
 
-1. Copy the example env file:
+If the Gemini key is missing or invalid:
 
-   ```bash
-   cp .env.example .env
-   ```
+- The app falls back to a deterministic, offline‑only mode with generic tips.
+- The UI clearly labels responses as **“Offline demo mode (no AI)”**.
+- This ensures judges (or future users) can still run the demo without provisioning keys.
 
-2. Edit `.env` and set your key:
+## 6. Ideas for Future Extensions
 
-   ```env
-   GEMINI_API_KEY=your-real-key-here
-   MAMA_AI_BACKEND=hf
-   ```
+Post‑hackathon, Gemini could power:
 
-3. mama-ai will automatically load `.env` on startup (API, UI, CLI).
+- **Timeline views**: Generate weekly summaries (“This week your meals looked more balanced than last week.”).
+- **Goal‑oriented coaching**: Prompts that track specific goals (hydration, movement, sleep hygiene, etc.).
+- **Multimodal comparisons**: Side‑by‑side image reasoning (e.g., wound day 1 vs day 5) with cautious language.
 
-You can also override the key at runtime inside the Streamlit UI using the
-"Gemini key for this session" input, which updates `GEMINI_API_KEY` in
-memory for the current process only.
-
-## 3. Backends and selection
-
-The central entrypoint is `src.model.predict_text(text, backend=None)`.
-
-- If `backend` is `None`, it uses `MAMA_AI_BACKEND` from the environment
-  (default: `hf`).
-- If `backend` is `"hf"`, it tries the Hugging Face sentiment model.
-- If `backend` is `"gemini"`, it tries the Gemini backend.
-- If `backend` is `"heuristic"`, it uses a local rule-based heuristic.
-
-The Streamlit UI exposes a dropdown to select the backend for each call.
-The FastAPI `/predict` endpoint accepts an optional `backend` field in the
-JSON body.
-
-## 4. Backend health
-
-`src.model.get_backend_status()` returns a dict describing the readiness of
-each backend (hf, gemini, heuristic). This is surfaced via:
-
-- API: `GET /backend_status`
-- UI: a "Backend Health" panel at the top of the page
-
-This lets you demo how the system behaves when Gemini is not configured
-(e.g., missing key) without causing crashes.
-
-## 5. Security notes
-
-- Never commit `.env` or any real API keys to Git.
-- `.env` is already in `.gitignore`.
-- For hackathons, it's fine to use a single key for all your local demos,
-  but consider separate keys for production / shared environments.
+This repository focuses on getting the **data flow, safety framing, and basic UX** ready so Gemini can be attached
+with minimal plumbing.
